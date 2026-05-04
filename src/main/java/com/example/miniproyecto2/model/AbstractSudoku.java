@@ -88,26 +88,51 @@ public abstract class AbstractSudoku implements ISudoku{
 
 
         fillRecursive(0, 0);
-        int hint;
 
-        hint = (int)(Math.random() * 17);
-        if(hint<10) hint +=5;
+
 
 
         int killed= 0;
-        while (killed < hint) {
-            // Generamos coordenadas del 0 al 5
-            int x = (int)(Math.random() * 6);
-            int y = (int)(Math.random() * 6);
+        while (killed < 17) {
 
-            // Si la casilla tiene un número, la ponemos a 0
+                // Generamos coordenadas
+                int x = (int) (Math.random() * 6);//Se elige un numero aleatorio de 0 a 5
+                int y = (int) (Math.random() * 3);// Se elige un numero aleatorio de 0 a 3
 
-            if ( addHint(x ,y ,tablero[x][y] )) {
-                killed++;
-            }
+
+                // Si la casilla tiene un número, la ponemos a 0
+
+                if (addHint(x, y, tablero[x][y])) {
+                    killed++;
+                }
+
         }
 
     }
+    private int makeHint( int block){
+
+
+         int x = (int) (Math.random() * 3);//Se elige un numero aleatorio de 0 a 3
+         int y = (int) (Math.random() * 2);// Se elige un numero aleatorio de 0 a 2
+        switch (block){
+            case 2:
+                x+= 3;
+            case 3:
+                y+= 2;
+            case 4:
+                x+= 3;
+                y+= 2;
+            case 5:
+                y+=4;
+                x+=3;
+        }
+
+        if (addHint(x, y, tablero[x][y])) {
+return 1;
+        }
+        return 0 ;
+    }
+
     private Boolean addHint(int x, int y, int number){
         if ( tablero[x][y]!= 0) {
             listHints.add(new int[]{x, y, number});
