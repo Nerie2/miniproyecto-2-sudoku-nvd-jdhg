@@ -5,10 +5,10 @@ import java.util.Arrays;
 
 import java.util.Collections;
 import java.util.List;
-
+import com.example.miniproyecto2.model.NodeMatrix;
 public abstract class AbstractSudoku implements ISudoku{
 
-    int[][] tablero = new int[6][6];
+    NodeMatrix tablero = new NodeMatrix();
     List<int[]> listHints =new ArrayList<>();
     public AbstractSudoku(){
         fillSudoku();
@@ -26,7 +26,7 @@ public abstract class AbstractSudoku implements ISudoku{
 
         for (int i =0; i <3; i++){
             for (int j=0; j<2; j++){
-                if (tablero [starRow+i][starCol+j]==number){
+                if (tablero.getValue(starRow+i , starCol+j)==number){
                     return false;
                 }
             }
@@ -34,14 +34,14 @@ public abstract class AbstractSudoku implements ISudoku{
         }
 
         for (int col=0; col<6; col++){
-            if (tablero[x][col]==number){
+            if (tablero.getValue(x,col)==number){
                 return false;
             }
 
         }
 
         for (int row=0; row<6; row++){
-            if (tablero[row][y]==number){
+            if (tablero.getValue(row , y)==number){
                 return false;
             }
 
@@ -64,7 +64,7 @@ public abstract class AbstractSudoku implements ISudoku{
             }
 
 
-            tablero [x][y]=number;
+            tablero.addInfo(x, y , number);
             return true;
         }
         return false;
@@ -80,7 +80,7 @@ public abstract class AbstractSudoku implements ISudoku{
     }
     @Override
     public int infoGrid(int x , int y){
-        return tablero[x][y];
+        return tablero.getValue(x , y );
 
     }
     @Override
@@ -102,7 +102,7 @@ public abstract class AbstractSudoku implements ISudoku{
 
                 // Si la casilla tiene un número, la ponemos a 0
 
-                if (addHint(x, y, tablero[x][y])) {
+                if (addHint(x, y, tablero.getValue(x,y))) {
                     killed++;
                 }
 
@@ -127,16 +127,16 @@ public abstract class AbstractSudoku implements ISudoku{
                 x+=3;
         }
 
-        if (addHint(x, y, tablero[x][y])) {
+        if (addHint(x, y, tablero.getValue(x,y))) {
 return 1;
         }
         return 0 ;
     }
 
     private Boolean addHint(int x, int y, int number){
-        if ( tablero[x][y]!= 0) {
+        if (tablero.getValue(x,y)!= 0) {
             listHints.add(new int[]{x, y, number});
-            tablero[x][y] = 0;
+            tablero.addInfo(x,y, 0);
             return true;
         }
         return false;
@@ -166,7 +166,8 @@ return 1;
                 }
 
                 //recursivamente se llama
-                tablero[fila][col] = 0;
+                tablero.addInfo(fila, col , 0);
+
             }
         }
 
