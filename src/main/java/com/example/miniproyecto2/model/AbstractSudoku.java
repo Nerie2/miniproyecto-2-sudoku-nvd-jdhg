@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import java.util.Collections;
 import java.util.List;
-import com.example.miniproyecto2.model.NodeMatrix;
+
 public abstract class AbstractSudoku implements ISudoku{
 
     NodeMatrix tablero = new NodeMatrix();
@@ -89,48 +89,50 @@ public abstract class AbstractSudoku implements ISudoku{
 
         fillRecursive(0, 0);
 
-
-
-
-        int killed= 0;
-        while (killed < 17) {
-
-                // Generamos coordenadas
-                int x = (int) (Math.random() * 6);//Se elige un numero aleatorio de 0 a 5
-                int y = (int) (Math.random() * 3);// Se elige un numero aleatorio de 0 a 3
-
-
-                // Si la casilla tiene un número, la ponemos a 0
-
-                if (addHint(x, y, tablero.getValue(x,y))) {
-                    killed++;
-                }
-
-        }
+    try{
+        makeHint(1);
+        makeHint(1);
+    } catch (Exception e) {
+        throw new RuntimeException(e);
+    }
 
     }
-    private int makeHint( int block){
-
+    private void makeHint( int block){
+        if (block>6){
+        return;
+        }
 
          int x = (int) (Math.random() * 3);//Se elige un numero aleatorio de 0 a 3
          int y = (int) (Math.random() * 2);// Se elige un numero aleatorio de 0 a 2
         switch (block){
             case 2:
                 x+= 3;
+                break;
             case 3:
                 y+= 2;
+                break;
             case 4:
                 x+= 3;
                 y+= 2;
+                break;
             case 5:
                 y+=4;
+                break;
+            case 6:
+                y+=4;
                 x+=3;
+                break;
+
         }
 
+
         if (addHint(x, y, tablero.getValue(x,y))) {
-return 1;
+            makeHint(block+1);
         }
-        return 0 ;
+        else{
+            makeHint(block);
+        }
+
     }
 
     private Boolean addHint(int x, int y, int number){
