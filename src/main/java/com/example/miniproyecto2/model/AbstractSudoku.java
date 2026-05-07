@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class AbstractSudoku implements ISudoku{
 
     NodeMatrix tablero = new NodeMatrix();
-    NodeMatrix copyTablero = new NodeMatrix();
+
     List<int[]> listHints =new ArrayList<>();
     public AbstractSudoku(){
         fillSudoku();
@@ -53,7 +53,11 @@ public abstract class AbstractSudoku implements ISudoku{
     }
     @Override
     public Boolean checkOriginalNum(int x, int y){
-        return copyTablero.getValue(x ,y) != 0;
+
+            return tablero.getOriginal(x ,y );
+
+
+
     }
 
     @Override
@@ -99,7 +103,7 @@ public abstract class AbstractSudoku implements ISudoku{
         makeHint(1);
         makeHint(1);
         makeHint(1);
-        copyTablero = tablero;
+
     } catch (Exception e) {
         throw new RuntimeException(e);
     }
@@ -135,6 +139,7 @@ public abstract class AbstractSudoku implements ISudoku{
 
 
         if (addHint(x, y, tablero.getValue(x,y))) {
+
             makeHint(block+1);
         }
         else{
@@ -147,6 +152,7 @@ public abstract class AbstractSudoku implements ISudoku{
         if (tablero.getValue(x,y)!= 0) {
             listHints.add(new int[]{x, y, number});
             tablero.addInfo(x,y, 0);
+            tablero.setOriginal(x ,y , false);
             return true;
         }
         return false;
@@ -172,10 +178,12 @@ public abstract class AbstractSudoku implements ISudoku{
 
                 // Si sendInput fue true, intentamos llenar la siguiente casilla
                 if (fillRecursive(fila, col + 1)) {
+                    tablero.setOriginal(fila, col , true);
                     return true;
                 }
 
                 //recursivamente se llama
+                tablero.setOriginal(fila, col , false);
                 tablero.addInfo(fila, col , 0);
 
             }

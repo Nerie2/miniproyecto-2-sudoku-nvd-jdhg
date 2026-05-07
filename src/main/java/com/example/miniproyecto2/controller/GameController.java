@@ -20,6 +20,7 @@ public class GameController {
     @FXML
     private AnchorPane rootPane;
     Boolean focus = false;
+    Boolean init = true;
     public Button getButtonAt(int col, int row) {
 
         for (Node node : gridPanel.getChildren()) {
@@ -108,7 +109,7 @@ public class GameController {
             String text = String.valueOf(hint[2]);
             getButtonAt(hint[0], hint[1]).setText(text);
             getButtonAt(hint[0], hint[1]).setStyle(
-                    "-fx-background-color: #ff4d4d;" +
+                    "-fx-background-color: #438a30;" +
                             "-fx-text-fill: white;" +
                             "-fx-background-radius: 10;"
             );
@@ -116,11 +117,23 @@ public class GameController {
 
     }
 
+
  private void refreshGrid(){
      for (int i = 0; i <=5; i++) {
          for (int j = 0; j <=5; j++) {
 
              getButtonAt(i ,j).setText(String.valueOf(Sudoku.getInstance().infoGrid(i , j)));
+             if(Sudoku.getInstance().infoGrid(i , j)!=0){
+                Button button = getButtonAt(i ,j);
+                button.setText(String.valueOf(Sudoku.getInstance().infoGrid(i , j)));
+                if(init){
+                    button.setStyle(
+                            "-fx-background-color: #3c3636;" +
+                                    "-fx-text-fill: white;" +
+                                    "-fx-background-radius: 10;"
+                    );
+                }
+             }
          }
      }
 
@@ -134,6 +147,7 @@ public class GameController {
             rootPane.requestFocus();
         }
         refreshGrid();
+        init = false;
         hint();
 
 
