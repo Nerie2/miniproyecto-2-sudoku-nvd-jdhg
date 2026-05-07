@@ -9,5 +9,6 @@ public interface ISudoku {
 
 
     void fillSudoku();
+    Boolean checkOriginalNum(int x, int y);
 
 }

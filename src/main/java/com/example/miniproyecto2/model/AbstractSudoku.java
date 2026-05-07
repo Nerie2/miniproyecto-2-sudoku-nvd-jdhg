@@ -9,6 +9,7 @@ import java.util.List;
 public abstract class AbstractSudoku implements ISudoku{
 
     NodeMatrix tablero = new NodeMatrix();
+    NodeMatrix copyTablero = new NodeMatrix();
     List<int[]> listHints =new ArrayList<>();
     public AbstractSudoku(){
         fillSudoku();
@@ -50,10 +51,14 @@ public abstract class AbstractSudoku implements ISudoku{
         return true;
 
     }
+    @Override
+    public Boolean checkOriginalNum(int x, int y){
+        return copyTablero.getValue(x ,y) != 0;
+    }
 
     @Override
     public Boolean sendInput(int x, int y, int number) {
-        if (checkInput(x,y,number)){
+        if (checkInput(x,y,number) && !checkOriginalNum(x, y)){
             if(listHints != null){
                 if(!listHints.isEmpty()){
                     int[] hint = listHints.get(0);
@@ -92,6 +97,9 @@ public abstract class AbstractSudoku implements ISudoku{
     try{
         makeHint(1);
         makeHint(1);
+        makeHint(1);
+        makeHint(1);
+        copyTablero = tablero;
     } catch (Exception e) {
         throw new RuntimeException(e);
     }
