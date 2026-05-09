@@ -24,6 +24,7 @@ public class GameStage extends Stage {
      * @throws IOException if the FXML file cannot be loaded
      */
     private GameStage() throws IOException{
+        setTitle("Sudoku");
         changeScene("/com/example/miniproyecto2/ViewGame.fxml");
     }
 

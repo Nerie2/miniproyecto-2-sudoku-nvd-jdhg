@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.miniproyecto2.controller.GameController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" prefHeight="400.0" prefWidth="600.0" stylesheets="@game.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.miniproyecto2.controller.GameController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="606.0" layoutX="-5.0">
+      <ImageView fitHeight="415.0" fitWidth="616.0" layoutX="-9.0" layoutY="-8.0">
          <image>
-            <Image url="@../../../images/Fondo.png" />
+            <Image url="@../../../images/FondoPeriodico.png" />
          </image>
       </ImageView>
-      <Button fx:id="miBoton" layoutX="249.0" layoutY="324.0" mnemonicParsing="false" onAction="#onBotonClick" prefHeight="32.0" prefWidth="103.0" text="Jugar" />
-      <GridPane fx:id="gridPanel" layoutX="92.0" layoutY="30.0" prefHeight="255.0" prefWidth="416.0 " AnchorPane.bottomAnchor="114.40000000000003" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="30.400000000000034">
+      <Button fx:id="btnPista" layoutX="255.0" layoutY="329.0" managed="false" mnemonicParsing="false" onAction="#onPistaClick" prefHeight="27.0" prefWidth="93.0" text="PISTA" visible="false" />
+      <GridPane fx:id="gridPanel" layoutX="92.0" layoutY="30.0" managed="false" prefHeight="255.0" prefWidth="416.0 " visible="false" AnchorPane.bottomAnchor="114.40000000000003" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="30.400000000000034">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -28,11 +28,11 @@
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="39.4" minHeight="10.0" prefHeight="36.4" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="43.39999999999999" minHeight="10.0" prefHeight="41.2" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="41.20000000000002" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="53.599999999999994" minHeight="10.0" prefHeight="43.599999999999994" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="47.20000000000002" minHeight="10.0" prefHeight="36.400000000000006" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="45.00000610351562" minHeight="10.0" prefHeight="40.20001831054687" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.399993896484375" minHeight="10.0" prefHeight="48.199981689453125" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="42.599993896484364" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="53.599999999999994" minHeight="10.0" prefHeight="44.79999389648438" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="47.20000000000002" minHeight="10.0" prefHeight="42.400006103515636" vgrow="SOMETIMES" />
         </rowConstraints>
           <children>
               <Button mnemonicParsing="false" onAction="#buttonAction" prefHeight="46.0" prefWidth="74.0" userData="0,0" />
@@ -50,7 +50,7 @@
               <Button mnemonicParsing="false" onAction="#buttonAction" prefHeight="50.0" prefWidth="86.0" userData="5,1" GridPane.columnIndex="5" GridPane.rowIndex="1" />
 
               <Button mnemonicParsing="false" onAction="#buttonAction" prefHeight="54.0" prefWidth="88.0" userData="0,2" GridPane.rowIndex="2" />
-              <Button mnemonicParsing="false" onAction="#buttonAction" prefHeight="46.0" prefWidth="75.0" userData="1,2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+              <Button mnemonicParsing="false" onAction="#buttonAction" prefHeight="57.0" prefWidth="78.0" userData="1,2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
               <Button mnemonicParsing="false" onAction="#buttonAction" prefHeight="54.0" prefWidth="87.0" userData="2,2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
               <Button mnemonicParsing="false" onAction="#buttonAction" prefHeight="72.0" prefWidth="98.0" userData="3,2" GridPane.columnIndex="3" GridPane.rowIndex="2" />
               <Button mnemonicParsing="false" onAction="#buttonAction" prefHeight="64.0" prefWidth="100.0" userData="4,2" GridPane.columnIndex="4" GridPane.rowIndex="2" />
@@ -78,12 +78,18 @@
               <Button mnemonicParsing="false" onAction="#buttonAction" prefHeight="81.0" prefWidth="168.0" userData="5,5" GridPane.columnIndex="5" GridPane.rowIndex="5" />
           </children>
       </GridPane>
-      <Line endX="215.0" endY="0.3999977111816406" layoutX="293.0" layoutY="30.0" startX="-201.0" startY="0.3999977111816406" />
-      <Line endX="362.20709228515625" endY="-17.692901611328125" layoutX="147.0" layoutY="304.0" startX="-55.0" startY="-18.399993896484375" />
+      <Line endX="215.0" endY="0.3999977111816406" layoutX="292.0" layoutY="29.0" startX="-201.0" startY="0.3999977111816406" />
+      <Line endX="362.20709228515625" endY="-17.692901611328125" layoutX="148.0" layoutY="305.0" startX="-55.0" startY="-18.399993896484375" />
       <Line endX="-50.0" endY="-28.399993896484375" layoutX="142.0" layoutY="314.0" startX="-50.5" startY="-283.6000061035156" />
       <Line endX="41.5" endY="271.6000061035156" layoutX="467.0" layoutY="14.0" startX="41.0" startY="16.39999771118164" />
-      <Line endX="185.0" endY="-285.1000061035156" layoutX="115.0" layoutY="316.0" startX="185.0" startY="-30.899993896484375" />
+      <Line endX="185.0" endY="-285.1000061035156" layoutX="114.0" layoutY="316.0" startX="185.0" startY="-30.899993896484375" />
       <Line endX="302.29290771484375" endY="-215.40000915527344" layoutX="205.0" layoutY="325.0" startX="-114.20707702636719" startY="-215.40000915527344" />
       <Line endX="414.29290771484375" endY="-100.19999694824219" layoutX="93.0" layoutY="301.0" startX="-1.0000152587890625" startY="-100.19999694824219" />
+      <ImageView fx:id="imgInicio" fitHeight="415.0" fitWidth="616.0" layoutX="-6.0" layoutY="-6.0">
+         <image>
+            <Image url="@../../../images/SudokuInicio.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnJugar" layoutX="251.0" layoutY="350.0" mnemonicParsing="false" onAction="#onPlayClick" prefHeight="27.0" prefWidth="101.0" text="JUGAR" />
    </children>
 </AnchorPane>

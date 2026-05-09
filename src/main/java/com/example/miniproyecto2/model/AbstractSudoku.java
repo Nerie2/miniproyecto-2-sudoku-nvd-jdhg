@@ -6,6 +6,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Base implementation for a 6x6 Sudoku-like game.
+ *
+ * <p>This class contains the core rules and board manipulation logic:
+ * validating inputs, tracking original (fixed) cells, generating a filled board,
+ * and removing cells to create hints/challenges.</p>
+ */
 public abstract class AbstractSudoku implements ISudoku{
 
     NodeMatrix tablero = new NodeMatrix();

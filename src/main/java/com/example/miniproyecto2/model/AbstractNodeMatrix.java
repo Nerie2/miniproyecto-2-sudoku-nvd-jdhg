@@ -1,5 +1,11 @@
 package com.example.miniproyecto2.model;
 
+/**
+ * Base implementation for a recursive, node-based matrix.
+ *
+ * <p>Each node can point to a "left" (x direction) and "right" (y direction) child node.
+ * It stores an integer value and a flag indicating whether the cell is part of the original puzzle.</p>
+ */
 public abstract class AbstractNodeMatrix implements INodeMatrix {
     NodeMatrix left;
     NodeMatrix right;
