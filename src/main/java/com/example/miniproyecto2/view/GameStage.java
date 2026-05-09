@@ -19,7 +19,7 @@ public class GameStage extends Stage {
     /**
      * Private constructor for the GameStage singleton.
      *
-     * Initializes the stage by loading the welcome scene.
+     * Initializes the stage by loading the main game FXML scene.
      *
      * @throws IOException if the FXML file cannot be loaded
      */
@@ -49,6 +49,9 @@ public class GameStage extends Stage {
         show();
     }
 
+    /**
+     * Holder for the lazy-initialized singleton instance (initialization-on-demand holder idiom).
+     */
     private static class GameHolder {
         private static GameStage INSTANCE;
     }

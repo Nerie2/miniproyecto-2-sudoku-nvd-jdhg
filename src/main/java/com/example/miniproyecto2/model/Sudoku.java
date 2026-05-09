@@ -1,9 +1,10 @@
 package com.example.miniproyecto2.model;
 
 /**
- * Singleton class that manages the game and extends AbstractGame.
- * It is the main model of the whole project. It inherits the constructor
- * from the abstract class and contains the Singleton logic.
+ * Singleton facade for the Sudoku game model.
+ *
+ * <p>Extends {@link AbstractSudoku}, which builds the board and rules on construction.
+ * Use {@link #getInstance()} to access the single shared game state from the UI.</p>
  */
 public class Sudoku extends AbstractSudoku {
 
@@ -22,6 +23,10 @@ public class Sudoku extends AbstractSudoku {
     } //singleton
 
 
+    /**
+     * Optional initializer hook for future use (e.g. resetting the singleton or reloading a puzzle).
+     * Currently resolves the instance without changing board state.
+     */
     public static void init() {
         Sudoku game = getInstance();
 

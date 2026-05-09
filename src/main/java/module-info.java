@@ -1,3 +1,9 @@
+/**
+ * Java Platform Module System descriptor for the MiniProyecto2 Sudoku application.
+ *
+ * <p>Declares dependencies on JavaFX and Swing (desktop) APIs, exports application packages,
+ * and opens packages required for FXML reflection-based controller injection.</p>
+ */
 module com.example.miniproyecto2 {
     requires javafx.controls;
     requires javafx.fxml;
