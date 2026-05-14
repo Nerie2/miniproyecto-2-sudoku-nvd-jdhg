@@ -126,8 +126,8 @@ public class GameController {
         position = getButtonData(button);
         focus = true;
 
-        int value = Sudoku.getInstance().infoGrid(position[0], position[1]);
-        selectedNumber = value;
+
+        selectedNumber = Sudoku.getInstance().infoGrid(position[0], position[1]);
         applySelectionHighlights();
     }
 
@@ -157,7 +157,7 @@ public class GameController {
      * @return true if valid, false otherwise
      */
     Boolean checkInput(char letter) {
-        char[] numbers = {'1', '2', '3', '4', '5', '6'};
+        char[] numbers = {'0','1', '2', '3', '4', '5', '6'};
         for (char number : numbers) {
             if (number == letter) return true;
         }
@@ -176,8 +176,6 @@ public class GameController {
                 selectedNumber = letter - '0';
                 refreshGrid();
                 applySelectionHighlights();
-            } else {
-                System.out.println("No se colocó el número.");
             }
         }
     }
