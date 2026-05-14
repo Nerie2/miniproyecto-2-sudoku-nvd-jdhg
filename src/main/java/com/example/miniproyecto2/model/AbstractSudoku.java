@@ -14,7 +14,7 @@ import java.util.List;
  *
  * <p>It uses a {@link NodeMatrix} structure to store values and flags for each cell.</p>
  *
- * @author Nerie & Jose David Hurtado
+ * @author Nerie Vasquez Diaz (2519638) & Jose David Hurtado (2519500)
  * @version 1.0
  */
 public abstract class AbstractSudoku implements ISudoku {

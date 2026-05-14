@@ -14,7 +14,7 @@ package com.example.miniproyecto2.model;
  * <p>Concrete implementations should extend this class to define specific behaviors
  * or additional logic for Sudoku or similar grid-based games.</p>
  *
- * @author Nerie & Jose David Hurtado
+ * @author Nerie Vasquez Diaz (2519638) & Jose David Hurtado (2519500)
  * @version 1.0
  */
 public abstract class AbstractNodeMatrix implements INodeMatrix {

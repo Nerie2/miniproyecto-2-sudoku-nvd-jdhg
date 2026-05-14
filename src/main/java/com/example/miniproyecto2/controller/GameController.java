@@ -26,7 +26,7 @@ import java.util.Objects;
  *   <li>Providing hints via the "Pista" button.</li>
  * </ul>
  *
- * @author Nerie & Jose David Hurtado
+ * @author Nerie Vasquez Diaz (2519638) & Jose David Hurtado (2519500)
  * @version 1.0
  */
 public class GameController {
