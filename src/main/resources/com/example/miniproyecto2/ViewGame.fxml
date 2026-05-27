@@ -87,5 +87,6 @@
          </image>
       </ImageView>
       <Button fx:id="btnJugar" layoutX="251.0" layoutY="350.0" mnemonicParsing="false" onAction="#onPlayClick" prefHeight="27.0" prefWidth="101.0" text="JUGAR" />
+      <Button fx:id="restart" disable="true" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#recharge" text="Reiniciar" visible="false" />
    </children>
 </AnchorPane>

@@ -9,7 +9,7 @@ package com.example.miniproyecto2.model;
 public class Sudoku extends AbstractSudoku {
 
 
-    private static final Sudoku INSTANCE = new Sudoku();
+    private static  Sudoku INSTANCE = new Sudoku();
 
 
     private Sudoku() {}
@@ -21,6 +21,12 @@ public class Sudoku extends AbstractSudoku {
     public static Sudoku getInstance() {
         return INSTANCE;
     } //singleton
+    /**
+     * Function of restart
+     */
+    public static void restartInstance(){
+         INSTANCE = new Sudoku();
+    }
 
 
     /**
