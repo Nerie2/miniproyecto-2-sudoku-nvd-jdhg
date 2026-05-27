@@ -1,6 +1,7 @@
 package com.example.miniproyecto2.controller;
 
 import com.example.miniproyecto2.model.Sudoku;
+import com.example.miniproyecto2.view.GameStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -10,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,6 +35,7 @@ public class GameController {
 
     /** Main Sudoku grid panel containing all cell buttons. */
     @FXML public GridPane gridPanel;
+    public Button restart;
 
     /** Current selected cell position: [col, row]. */
     private int[] position = new int[2];
@@ -126,8 +129,8 @@ public class GameController {
         position = getButtonData(button);
         focus = true;
 
-        int value = Sudoku.getInstance().infoGrid(position[0], position[1]);
-        selectedNumber = value;
+
+        selectedNumber = Sudoku.getInstance().infoGrid(position[0], position[1]);
         applySelectionHighlights();
     }
 
@@ -157,7 +160,7 @@ public class GameController {
      * @return true if valid, false otherwise
      */
     Boolean checkInput(char letter) {
-        char[] numbers = {'1', '2', '3', '4', '5', '6'};
+        char[] numbers = {'0','1', '2', '3', '4', '5', '6'};
         for (char number : numbers) {
             if (number == letter) return true;
         }
@@ -176,8 +179,6 @@ public class GameController {
                 selectedNumber = letter - '0';
                 refreshGrid();
                 applySelectionHighlights();
-            } else {
-                System.out.println("No se colocó el número.");
             }
         }
     }
@@ -356,6 +357,8 @@ public class GameController {
         refreshGrid();
         init = false;
         applySelectionHighlights();
+        restart.setDisable(false);
+        restart.setVisible(true);
     }
 
     /**
@@ -366,5 +369,14 @@ public class GameController {
     private void onPistaClick() {
         hint();
         applySelectionHighlights();
+    }
+    /**
+     * Restart the game
+     */
+    @FXML
+    public void recharge() throws IOException {
+        GameStage.getInstance().changeScene("/com/example/miniproyecto2/ViewGame.fxml");
+        Sudoku.restartInstance();
+
     }
 }

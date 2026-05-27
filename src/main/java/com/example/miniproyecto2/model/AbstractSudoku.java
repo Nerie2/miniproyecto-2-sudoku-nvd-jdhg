@@ -48,6 +48,7 @@ public abstract class AbstractSudoku implements ISudoku {
      */
     @Override
     public boolean checkInput(int x, int y, int number) {
+        if(number==0) return true;
         if (number < 1 || number > 6) return false;
 
         int starRow = (x > 2) ? 3 : 0;
