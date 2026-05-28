@@ -5,6 +5,7 @@ import com.example.miniproyecto2.view.GameStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -179,7 +180,25 @@ public class GameController {
                 selectedNumber = letter - '0';
                 refreshGrid();
                 applySelectionHighlights();
+            } else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+                alert.setTitle("Información");
+                alert.setHeaderText(null);
+                alert.setContentText("No se puede colocar ahi ");
+
+                alert.showAndWait();
             }
+
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+            alert.setTitle("Información");
+            alert.setHeaderText(null);
+            alert.setContentText("Numero No permitido");
+
+            alert.showAndWait();
         }
     }
 
